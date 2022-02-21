@@ -68,6 +68,7 @@ function getData(data) {
 		};
 		result.push(object);
 	});
+	console.log(result);
 	barData = result;
 }
 function readData(filename) {
@@ -95,8 +96,8 @@ function processData(allText) {
             lines.push(tarr);
         }
     }
+	console.log(lines);
 	return lines;
-    // alert(lines);
 }
 
 function convertDate(date) {
@@ -222,35 +223,15 @@ $('#stock').change(function(){
 document.getElementById('update').addEventListener('click', function() {
 	update();
 });
-document.getElementById('showImg').addEventListener('click', function() {
-	// var ctx = document.getElementById("chart").getContext("2d");
-	// window.myLine = new Chart(ctx).Line(lineChartData, {
-	// responsive: true,
-	// onAnimationComplete:function(){
-	// 	var tcanvas=document.createElement('chart');
-	// 	var tctx=tcanvas.getContext('2d');
-	// 	tcanvas.width=ctx.canvas.width;
-	// 	tcanvas.height=ctx.canvas.height;
-	// 	tctx.fillStyle='white';
-	// 	tctx.fillRect(0,0,tcanvas.width,tcanvas.height);
-	// 	tctx.drawImage(canvas,0,0);
-	// 	var img=new Image();
-	// 	img.onload=function(){
-	// 	document.body.appendChild(img);
-	// 	}
-	// 	img.src=tcanvas.toDataURL();
-	// }
-	// });
-	// $('#chart').css('background-color', 'rgba(0, 0, 0, 0)');
+document.getElementById('download').addEventListener('click', function() {
 	var canvas = document.getElementById("chart");
 	var img    = canvas.toDataURL("image/png");
 	var a = document.createElement('a');
 	a.href = img;
-	a.download = "1";
+	a.download = $('#stock').val() + '-' + $('#candle').val();
 	document.body.appendChild(a);
 	a.click();
 	document.body.removeChild(a);
-	chart_div.innerHTML = '<img src="' + img + '" download="chart.png">';
 });
 
 

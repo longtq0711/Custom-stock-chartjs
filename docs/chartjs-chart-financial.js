@@ -369,8 +369,9 @@ class CandlestickElement extends FinancialElement {
 			borderColor = helpers.valueOrDefault(borderColors ? borderColors.unchanged : undefined, globalOpts$1.elements.candlestick.borderColor);
 			ctx.fillStyle = helpers.valueOrDefault(me.color ? me.color.unchanged : undefined, globalOpts$1.elements.candlestick.color.unchanged);
 		}
+		ctx.strokeStyle = "blue";
 		if (me.candle == 'doji') {
-			if((close == open) || (Math.abs(close-open) <= 5)) {
+			if((close == open) || (Math.abs(close-open) <= 3)) {
 				ctx.strokeRect(x - me.width / 2 - 2, low + 10, me.width + 5, high - low - 20);
 			}
 		} else if (me.candle == 'marubozu') {
@@ -378,17 +379,16 @@ class CandlestickElement extends FinancialElement {
 				ctx.strokeRect(x - me.width / 2 - 2, low + 10, me.width + 5, high - low - 20);
 			}
 		} else if (me.candle == 'd-doji') {
-			if((close == open) || (Math.abs(close-open) <= 5)) {
+			if((close == open) || (Math.abs(close-open) <= 3)) {
 				var length = high - close;
-				if (length >= 0 && length <= 5) {
+				if (length >= 0 && length <= 3) {
 					ctx.strokeRect(x - me.width / 2 - 2, low + 10, me.width + 5, high - low - 20);
 				}
 			}
 		} else if (me.candle == 'g-doji') {
-			if((close == open) || (Math.abs(close-open) <= 5)) {
-				console.log(1);
+			if((close == open) || (Math.abs(close-open) <= 3)) {
 				var length = open - low;
-				if (length >= 0 && length <= 5) {
+				if (length >= 0 && length <= 3) {
 					ctx.strokeRect(x - me.width / 2 - 2, low + 10, me.width + 5, high - low - 20);
 				}
 			}
